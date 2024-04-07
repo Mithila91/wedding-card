@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Gallery({ data }) {
   return (
-    <div>
+    <div className="container my-12">
       {data.map((item) => (
         <div key={item._id}>
           <h1>{item.gallery.subheading}</h1>

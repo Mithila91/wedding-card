@@ -13,7 +13,7 @@ export default async function Home() {
   );
 
   return (
-    <>
+    <div className="">
       <Hero
         mainHeading={aboutData[0].hero.mainHeading}
         subheading={aboutData[0].hero.subheading}
@@ -23,6 +23,6 @@ export default async function Home() {
       <About data={aboutData} />
       <Gallery data={aboutData} />
       <Information data={informationData} />
-    </>
+    </div>
   );
 }
