@@ -1,7 +1,7 @@
 import about from "./about.schemas";
-import gallery from "./gallery.schemas";
-import hero from "./hero.schemas";
-
-const schemas = [about, gallery, hero];
+import location from "./location.schemas";
+import information from "./information.schemas";
+//add more schemas here
+const schemas = [about, location, information];
 
 export default schemas;

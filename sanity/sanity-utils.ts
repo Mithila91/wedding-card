@@ -7,14 +7,41 @@ export async function getDataFromSanity() {
     apiVersion: "2024-04-01",
   });
 
-  return client.fetch(
+  const aboutData = await client.fetch(
     groq`*[_type == "about"] {
         _id,
         _createdAt,
-      heading,
-      description,
-      "imageUrl": images.asset->url
-      
+        heading,
+        description,
+        "imageUrl": images.asset->url,
+        gallery {
+          subheading,
+          "images": images[].asset->url
+        },
+        hero {
+          mainHeading,
+          subheading
+        }
     }`
   );
+
+  const locationData = await client.fetch(
+    groq`*[_type == "location"] {
+        subHeading,
+        heading,
+        title,
+        paragraph
+    }`
+  );
+
+  const informationData = await client.fetch(
+    groq`*[_type == "information"] {
+      
+        heading,
+        subheading,
+        paragraph
+    }`
+  );
+
+  return { aboutData, locationData, informationData };
 }

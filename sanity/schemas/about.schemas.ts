@@ -6,6 +6,23 @@ const about = {
   type: "document",
   fields: [
     {
+      name: "hero",
+      title: "Hero",
+      type: "object",
+      fields: [
+        {
+          name: "mainHeading",
+          title: "Heading",
+          type: "string",
+        },
+        {
+          name: "subheading",
+          title: "Subheading",
+          type: "string",
+        },
+      ],
+    },
+    {
       name: "heading",
       title: "Heading",
       type: "string",
@@ -62,6 +79,31 @@ const about = {
           styles: [],
           type: "block",
         }),
+      ],
+    },
+    {
+      name: "gallery",
+      title: "Photo Gallery",
+      type: "document",
+      fields: [
+        {
+          name: "subheading",
+          title: "Subheading",
+          type: "string",
+        },
+        {
+          name: "images",
+          title: "Images",
+          type: "array",
+          of: [
+            {
+              type: "image",
+              options: {
+                hotspot: true,
+              },
+            },
+          ],
+        },
       ],
     },
   ],
