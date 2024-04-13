@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     fontFamily: {
       sans: ["var(--font-sans)", ...fontFamily.sans],
-      heading: ["var(--font-lora)", ...fontFamily.sans],
+      heading: ["var(--great-vibes)", ...fontFamily.sans],
     },
     container: {
       center: true,

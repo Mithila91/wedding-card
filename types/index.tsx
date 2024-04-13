@@ -1,14 +1,15 @@
-export type Description = {
-    _key: string;
-    children: { text: string }[];
-  };
-  
-  export type AboutData = {
-    _id: string;
-    heading: string;
-    description: Description[];
-    imageUrl: string;
-  };
+export type Description = string[];
+
+export type AboutData = {
+  _id: string;
+  heading: string;
+  description: Description;
+  imageUrl: string;
+};
+
+export type AboutProps = {
+  data: AboutData[];
+};
 
   export type Paragraph = {
     children: { text: string }[];

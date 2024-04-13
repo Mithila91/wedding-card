@@ -1,19 +1,20 @@
 import "tailwindcss/tailwind.css";
+import '@/styles/index.css'
 
-import { Inter, Lora } from "next/font/google";
+import {Poppins, Great_Vibes } from "next/font/google";
 import Navbar from "./components/Navbar";
 import { Suspense } from "react";
 
-const sans = Inter({
+const sans = Poppins({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400"],
 });
 
-const heading = Lora({
-  variable: "--font-lora",
+const heading = Great_Vibes({
+  variable: "--great-vibes",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400"],
 });
 
 export default async function RootLayout({

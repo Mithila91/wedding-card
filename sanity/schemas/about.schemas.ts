@@ -47,38 +47,11 @@ const about = {
       title: "Description",
       type: "array",
       of: [
-        // Paragraphs
-        defineArrayMember({
-          lists: [],
-          marks: {
-            annotations: [
-              {
-                name: "link",
-                type: "object",
-                title: "Link",
-                fields: [
-                  {
-                    name: "href",
-                    type: "url",
-                    title: "Url",
-                  },
-                ],
-              },
-            ],
-            decorators: [
-              {
-                title: "Italic",
-                value: "em",
-              },
-              {
-                title: "Strong",
-                value: "strong",
-              },
-            ],
-          },
-          styles: [],
-          type: "block",
-        }),
+        {
+          type: "text",
+          title: "Text",
+          name: "text",
+        },
       ],
     },
     {
