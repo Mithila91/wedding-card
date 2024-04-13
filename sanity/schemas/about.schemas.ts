@@ -20,6 +20,14 @@ const about = {
           title: "Subheading",
           type: "string",
         },
+        {
+          name: "heroImage",
+          title: "Hero Image",
+          type: "image",
+          options:{
+            hotspot: true,
+          }
+        }
       ],
     },
     {

@@ -20,7 +20,8 @@ export async function getDataFromSanity() {
         },
         hero {
           mainHeading,
-          subheading
+          subheading,
+          "heroImage": heroImage.asset->url
         }
     }`
   );

@@ -11,7 +11,7 @@ interface GalleryProps {
 
 export default function Gallery({ data }: GalleryProps) {
   return (
-    <div className="bg-primary-100 mx-auto px-5 py-20 lg:px-32 lg:pt-24">
+    <div className="bg-blue-800 mx-auto px-5 py-20 lg:px-32 lg:pt-24">
       <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
         {data.flatMap((item, index) => 
           item.gallery.images.map((imageUrl, imageIndex) => (

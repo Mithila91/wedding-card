@@ -34,6 +34,9 @@ const config: Config = {
       },
     },
     extend: {
+      inset: {
+        '-50': '-50px',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
