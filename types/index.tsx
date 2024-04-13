@@ -32,3 +32,11 @@ export type AboutProps = {
     paragraph: LocationParagraph[];
   };
   
+  export type PhotoGallery = {
+    _id: string;
+    gallery: {
+      subheading: string;
+      images: string[];
+    };
+    imageUrl: string;
+  }

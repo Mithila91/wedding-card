@@ -14,8 +14,9 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white px-6 py-4 shadow">
-      <div className="flex flex-col md:flex-row justify-between items-center">
+    <nav className="bg-white px-6 py-4 container">
+    <div className="flex flex-col md:flex-row justify-between items-center">
+      <div className="flex my-6 justify-between items-center w-full md:w-auto">
         <Image
           src="/images/logo.png"
           alt="about image"
@@ -47,19 +48,24 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-        <div className={`md:flex ${isOpen ? "block" : "hidden"}`}>
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="px-2 py-1 text-gray-800 rounded hover:bg-gray-300"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
       </div>
-    </nav>
+      <div
+        className={`md:flex ${
+          isOpen ? "block" : "hidden"
+        } w-full h-screen md:h-auto md:w-auto flex flex-col md:flex-row md:items-center md:justify-between`}
+      >
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="md:px-10 md:py-1 py-4 text-blue-800 hover:bg-gray-300 md:text-base  text-4xl"
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  </nav>
   );
 };
 

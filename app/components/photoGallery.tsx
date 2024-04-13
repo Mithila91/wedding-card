@@ -1,24 +1,33 @@
+"use client";
+import React from "react";
 import Image from "next/image";
+import { PhotoGallery } from "@/types";
 
-export default function Gallery({ data }) {
+
+
+interface GalleryProps {
+  data: PhotoGallery[];
+}
+
+export default function Gallery({ data }: GalleryProps) {
   return (
-    <div className="container my-12">
-      {data.map((item) => (
-        <div key={item._id}>
-          <h1>{item.gallery.subheading}</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {item.gallery.images.map((imageUrl, index) => (
+    <div className="bg-primary-100 mx-auto px-5 py-20 lg:px-32 lg:pt-24">
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+        {data.flatMap((item, index) => 
+          item.gallery.images.map((imageUrl, imageIndex) => (
+            <div key={`${item._id}-${imageIndex}`} className="overflow-hidden rounded-lg">
               <Image
-                key={index}
                 src={imageUrl}
-                alt={`Gallery image ${index + 1}`}
-                width={300}
-                height={300}
+                alt={`Gallery image ${imageIndex ++}`}
+                layout="responsive"
+                width={400}
+                height={400}
+                className="object-cover"
               />
-            ))}
-          </div>
-        </div>
-      ))}
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }

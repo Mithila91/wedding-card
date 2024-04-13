@@ -1,7 +1,7 @@
 import "tailwindcss/tailwind.css";
 import '@/styles/index.css'
 
-import {Poppins, Great_Vibes } from "next/font/google";
+import {Poppins, Great_Vibes, Playfair_Display } from "next/font/google";
 import Navbar from "./components/Navbar";
 import { Suspense } from "react";
 
@@ -11,8 +11,8 @@ const sans = Poppins({
   weight: ["400"],
 });
 
-const heading = Great_Vibes({
-  variable: "--great-vibes",
+const heading = Playfair_Display({
+  variable: "--playfair-display",
   subsets: ["latin"],
   weight: ["400"],
 });
