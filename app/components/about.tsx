@@ -1,6 +1,12 @@
 import Image from "next/image";
+import { AboutData } from "@/types";
+  
+export type AboutProps = {
+  data: AboutData[];
+};
 
-export default function About({ data }) {
+
+export default function About({ data }: AboutProps){
   return (
     <div>
       {data.map((about) => (

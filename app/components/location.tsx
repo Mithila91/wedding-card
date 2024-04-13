@@ -1,7 +1,12 @@
 import Link from "next/link";
 import React from "react";
+import { LocationData } from "@/types";
 
-function Location({ data }) {
+type LocationProps = {
+  data: LocationData[];
+};
+
+export default function Location({ data }: LocationProps){
   return (
     <div className="container flex items-center flex-col h-[50vh] md:flex-row">
       <div className="md:w-1/2 p-4 md:pb-96">
@@ -23,4 +28,3 @@ function Location({ data }) {
   );
 }
 
-export default Location;

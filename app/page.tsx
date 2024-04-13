@@ -1,7 +1,7 @@
 import { getDataFromSanity } from "@/sanity/sanity-utils";
 import About from "./components/about";
 import Gallery from "./components/photoGallery";
-import Hero from "./components/hero";
+import {Hero} from "./components/hero";
 import Location from "./components/location";
 import Information from "./components/information";
 export default async function Home() {

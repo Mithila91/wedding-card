@@ -1,6 +1,8 @@
 import "tailwindcss/tailwind.css";
 
 import { Inter, Lora } from "next/font/google";
+import Navbar from "./components/Navbar";
+import { Suspense } from "react";
 
 const sans = Inter({
   variable: "--font-sans",
@@ -21,7 +23,12 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className={`${sans.variable} ${heading.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Suspense>
+          <Navbar />
+        </Suspense>
+        {children}
+      </body>
     </html>
   );
 }

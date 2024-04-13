@@ -1,7 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import { InformationData } from "@/types";
 
-function Information({ data }) {
+
+type InformationProps = {
+  data: InformationData[];
+};
+
+export default function Information({ data }: InformationProps){
   return (
     <div className="container flex items-center flex-col h-[50vh] md:flex-row">
       <div className="md:w-1/2 p-4">
@@ -39,4 +45,3 @@ function Information({ data }) {
   );
 }
 
-export default Information;
