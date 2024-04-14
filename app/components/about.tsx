@@ -38,7 +38,7 @@ export default function About({ data }: AboutProps) {
   };
 
   return (
-    <div>
+    <div id="about">
       {data.map((about) => (
         <div
           key={about._id}
@@ -55,7 +55,7 @@ export default function About({ data }: AboutProps) {
             <h2 className="font-heading text-5xl text-white py-20">
               {about.heading}
             </h2>
-            <div className="md:px-40 p-6 h-[448px] overflow-auto scrollbar-hide">
+            <div className="md:px-40 p-6 md:pb-0 mb-10 h-[448px] overflow-auto scrollbar-hide">
               {about.description.map((desc, index) => (
                 <p
                   key={index}

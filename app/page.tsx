@@ -14,7 +14,7 @@ export default async function Home() {
   );
 
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
       <Hero
         mainHeading={aboutData[0].hero.mainHeading}
         subheading={aboutData[0].hero.subheading}

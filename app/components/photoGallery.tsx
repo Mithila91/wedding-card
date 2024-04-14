@@ -38,7 +38,8 @@ export default function Gallery({ data }: GalleryProps) {
     });
 
     return (
-        <motion.div className="bg-blue-800 mx-auto px-5 py-20 lg:px-32 lg:pt-24" variants={staggerVariants} initial="initial" animate={inView ? "animate" : "initial"} ref={ref}>
+        <motion.div
+        className="bg-blue-800 mx-auto px-5 py-20 lg:px-32 lg:pt-24" variants={staggerVariants} initial="initial" animate={inView ? "animate" : "initial"} ref={ref}>
             <motion.div className="grid grid-cols-2 gap-2 md:grid-cols-4">
                 {data.flatMap((item, index) => 
                     item.gallery.images.map((imageUrl, imageIndex) => (

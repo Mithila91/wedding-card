@@ -13,10 +13,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { href: "/our-story", label: "Our Story" },
-    { href: "/invitation", label: "Invitation" },
-    { href: "/information", label: "Information" },
-    { href: "/rsvp", label: "RSVP" },
+    { href: "#about", label: "Our Story" },
+    { href: "#invitation", label: "Invitation" },
+    { href: "#information", label: "Information" },
+    { href: "#rsvp", label: "RSVP" },
   ];
 
   // Variants for mobile animation
@@ -91,7 +91,7 @@ const Navbar = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className="py-4 text-blue-800 hover:bg-gray-300 text-4xl"
+                className="py-4 text-blue-800 text-4xl"
               >
                 {item.label}
               </Link>

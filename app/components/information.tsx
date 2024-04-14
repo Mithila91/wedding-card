@@ -30,6 +30,7 @@ export default function Information({ data }: InformationProps) {
 
   return (
     <motion.div
+      id="information"
       className="container flex items-center flex-col h-[100vh] mb-10 md:flex-row"
       ref={ref}
     >
@@ -47,7 +48,7 @@ export default function Information({ data }: InformationProps) {
           href="https://maps.app.goo.gl/YUF2ebk8SFCrVZQ5A"
         >
           <motion.button whileHover={{ scale: 1.1 }}>
-            Get Directions here
+            Map
           </motion.button>
         </Link>
         <p className="text-base text-blue-800 font-bold mt-4">

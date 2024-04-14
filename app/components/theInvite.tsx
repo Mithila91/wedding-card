@@ -28,6 +28,7 @@ export default function TheInvite({ data }: LocationProps) {
   };
   return (
     <motion.div
+      id="invitation"
       className="container flex items-center flex-col md:h-screen md:flex-row"
       ref={ref}
     >

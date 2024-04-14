@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import React, { useRef, useState } from "react";
 
 import emailjs from "@emailjs/browser";
+import Modal from "./modal";
 
 const RSVP = () => {
   const { ref, inView } = useInView({
@@ -12,30 +13,35 @@ const RSVP = () => {
 
   const fadeInVariants = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { duration: 0.5 } },
+    show: { opacity: 1, transition: { duration: 1.5 } },
   };
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    if (!name || !email) {
+      // Display modal with error message
+      setModalOpen(true);
+      setIsSuccess(false); // Set isSuccess to false for error message
+      return;
+    }
 
-    // Your EmailJS service ID, template ID, and Public Key
     const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID;
     const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
 
-    // Create a new object that contains dynamic template params
     const templateParams = {
       from_name: name,
       from_email: email,
-      to_name: "Web Wizard",
+      to_name: "Mithila & Houssein",
       message: message,
     };
 
-    // Send the email using EmailJS
     emailjs
       .send(serviceId!, templateId!, templateParams, publicKey!)
       .then((response) => {
@@ -43,60 +49,126 @@ const RSVP = () => {
         setName("");
         setEmail("");
         setMessage("");
+        setModalOpen(true); // Display modal with success message
+        setIsSuccess(true); // Set isSuccess to true for success message
       })
       .catch((error) => {
         console.error("Error sending email:", error);
+        setModalOpen(true); // Display modal with error message
+        setIsSuccess(false); // Set isSuccess to false for error message
       });
   };
+
   return (
-    <div className="bg-blue-800 py-6 flex justify-center items-center h-full">
+    <div 
+    id="rsvp"
+    className="bg-blue-800 py-12 flex flex-col md:flex-row justify-center items-center ">
       <motion.div
-        className="p-12 bg-white rounded-3xl w-96"
+        ref={ref}
+        variants={fadeInVariants}
+        initial="hidden"
+        animate={inView ? "show" : "hidden"}
+        className="w-full md:w-1/2 md:px-24 px-6 py-10 text-white"
+      >
+        <h4 className="font-semibold tracking-wider leading-[48px] text-white text-3xl my-6">
+          Kindly RSVP by completing the form before June 25th, 2024:
+        </h4>
+        <div className="font-thin tracking-wider leading-lose">
+          <p className="pb-4">
+            Your attendance means the world to us, and we want to ensure your
+            comfort and happiness throughout the festivities. Please share any
+            special requests or dietary restrictions so we can make arrangements
+            to accommodate you seamlessly.
+          </p>
+          <p className="pb-4">
+            We are eagerly anticipating your response and eagerly awaiting the
+            moment we can share our love and happiness with you!
+          </p>
+          <p className="pb-4">With love and excitement,</p>
+          <p className="pb-4 font-heading">Mithila & Houssein</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="p-12 bg-white rounded-3xl flex mx-6 md:mx-0 shadow-xl"
         ref={ref}
         variants={fadeInVariants}
         initial="hidden"
         animate={inView ? "show" : "hidden"}
       >
-        <div className="mb-7">
-          <h3 className="font-semibold text-2xl text-gray-800">RSVP</h3>
-        </div>
-        <form className="space-y-6 pb-6" onSubmit={handleSubmit}>
-          <div>
+        <form
+          className="md:w-[350px] w-[250px] mx-auto"
+          onSubmit={handleSubmit}
+        >
+          <div className="mb-5">
+            <label
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue-800"
+            >
+              Please enter you name
+            </label>
+
             <input
               type="text"
+              name="name"
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-200 focus:bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
+              className="w-full px-4 py-3 bg-gray-200 focus:bg-gray-100 
+              border border-gray-200 rounded-lg focus:outline-none 
+              focus:border-purple-400"
             />
           </div>
-          <div>
+          <div className="mb-5">
+            <label
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue-800"
+            >
+              Please enter you email
+            </label>
+
             <input
               type="email"
+              name="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-200 focus:bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
+              className="w-full px-4 py-3 bg-gray-200 focus:bg-gray-100 
+              border border-gray-200 rounded-lg focus:outline-none 
+              focus:border-purple-400"
             />
           </div>
-          <div>
+          <div className="mb-5">
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue-800">
+              Please let us know if you have any Requests/allergies/other
+            </label>
+
             <textarea
+              name="message"
               placeholder="Message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-200 focus:bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
+              className="w-full px-4 py-3 bg-gray-200 focus:bg-gray-100 
+              border border-gray-200 rounded-lg focus:outline-none 
+              focus:border-purple-400"
             ></textarea>
           </div>
-          <div>
-            <button
+          <div className="mb-5">
+            <motion.button
+              whileHover={{ scale: 1.1, borderColor: "#9f7aea" }}
               type="submit"
-              className="w-full flex justify-center bg-purple-800 hover:bg-purple-700 text-gray-100 p-3 rounded-lg tracking-wide font-semibold cursor-pointer transition ease-in duration-500"
+              className="w-full flex justify-center hover:bg-purple-700 
+              text-blue-800 p-3 rounded-lg tracking-wide font-semibold 
+              cursor-pointer transition ease-in duration-500 border-blue-800 border-2"
             >
               Submit
-            </button>
+            </motion.button>
           </div>
         </form>
       </motion.div>
+      <Modal
+        isOpen={modalOpen}
+        setIsOpen={setModalOpen}
+        isSuccess={isSuccess}
+      />
     </div>
   );
 };
