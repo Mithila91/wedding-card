@@ -21,15 +21,15 @@ export type AboutProps = {
     paragraph: Paragraph[];
   };
   
-  export type LocationParagraph = {
+  export type InviteParagraph = {
     children: { text: string }[];
   };
   
- export type LocationData = {
-    subHeading: string;
+ export type InviteData = {
+    subheading: string;
     heading: string;
     title: string;
-    paragraph: LocationParagraph[];
+    paragraph: InviteParagraph[];
   };
   
   export type PhotoGallery = {

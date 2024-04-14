@@ -4,8 +4,12 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import { useInView } from "react-intersection-observer";
 
 const Navbar = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+  });
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
@@ -79,7 +83,11 @@ const Navbar = () => {
           animate={isOpen ? "animate" : "initial"}
         >
           {navItems.map((item, index) => (
-            <motion.div key={index} variants={childVariants} className="pb-6 font-bold">
+            <motion.div
+              key={index}
+              variants={childVariants}
+              className="pb-6 font-bold"
+            >
               <Link
                 key={item.href}
                 href={item.href}
@@ -93,13 +101,16 @@ const Navbar = () => {
       </nav>
 
       {/* Desktop Navbar */}
-      <motion.nav className="hidden md:block bg-white px-6 py-4 w-full container">
+      <motion.nav
+        className="hidden md:block bg-white px-6 py-4 w-full container"
+        ref={ref}
+      >
         <div className="flex flex-col md:flex-row justify-end items-center w-full md:w-auto my-4"></div>
         <motion.div
           className=" w-full h-screen md:pt-0 pt-24  md:h-auto md:w-auto flex flex-col md:flex-row md:items-center md:justify-end"
           variants={desktopParentVariants}
           initial="initial"
-          animate="animate"
+          animate={inView ? "animate" : "initial"}
         >
           {navItems.map((item, index) => (
             <motion.div key={index} variants={childVariants}>
@@ -108,7 +119,9 @@ const Navbar = () => {
                 href={item.href}
                 className="px-10 py-4 text-blue-800 hover:bg-gray-300 text-xl"
               >
-                {item.label}
+                <motion.button whileHover={{ scale: 1.1 }}>
+                  {item.label}
+                </motion.button>{" "}
               </Link>
             </motion.div>
           ))}

@@ -1,32 +1,67 @@
-import Link from "next/link";
+"use client";
 import React from "react";
+import Link from "next/link";
 import { InformationData } from "@/types";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 type InformationProps = {
   data: InformationData[];
 };
 
 export default function Information({ data }: InformationProps) {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+  });
+
+  const leftContainerVariants = {
+    hidden: { opacity: 0, x: -100 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  };
+
+  const rightContainerVariants = {
+    hidden: { opacity: 0, x: 100 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  };
+
   if (!data || data.length === 0) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="container flex items-center flex-col h-[100vh] mb-10 md:flex-row">
-      <div className="md:w-1/2 p-4">
+    <motion.div
+      className="container flex items-center flex-col h-[100vh] mb-10 md:flex-row"
+      ref={ref}
+    >
+      <motion.div
+        className="md:w-1/2 p-4"
+        variants={leftContainerVariants}
+        initial="hidden"
+        animate={inView ? "show" : "hidden"}
+      >
         <h3 className="text-6xl font-thin tracking-wider leading-[64px] my-10">
           {data[0].heading}
         </h3>
-        <Link className="text-base pb-1 border-b-2 border-current" href="https://maps.app.goo.gl/YUF2ebk8SFCrVZQ5A">
-          Map
+        <Link
+          className="text-base pb-1 border-b-2 border-current"
+          href="https://maps.app.goo.gl/YUF2ebk8SFCrVZQ5A"
+        >
+          <motion.button whileHover={{ scale: 1.1 }}>
+            Get Directions here
+          </motion.button>
         </Link>
         <p className="text-base text-blue-800 font-bold mt-4">
           <span className="pb-1 border-b-2 font-bold border-current">
             Ceremony starts at:
           </span>
         </p>
-      </div>
-      <div className="md:w-1/2 p-4">
+      </motion.div>
+      <motion.div
+        className="md:w-1/2 p-4"
+        variants={rightContainerVariants}
+        initial="hidden"
+        animate={inView ? "show" : "hidden"}
+      >
         <h4 className="text-base py-6 text-blue-800 font-bold mb-2">
           {data[0].subheading}
         </h4>
@@ -54,7 +89,7 @@ export default function Information({ data }: InformationProps) {
             </ul>
           ) : null
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

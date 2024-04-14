@@ -6,7 +6,7 @@ const location = {
   type: "document",
   fields: [
     {
-      name: "subHeading",
+      name: "subheading",
       title: "Subheading",
       type: "string",
     },

@@ -28,7 +28,7 @@ export async function getDataFromSanity() {
 
   const locationData = await client.fetch(
     groq`*[_type == "location"] {
-        subHeading,
+        subheading,
         heading,
         title,
         paragraph
