@@ -43,6 +43,14 @@ export async function getDataFromSanity() {
         paragraph
     }`
   );
+  const rsvpData = await client.fetch(
+    groq`*[_type == "rsvp"] {
+        heading,
+        paragraph,
+        closingMessage,
+        names
+    }`
+  );
 
-  return { aboutData, locationData, informationData };
+  return { aboutData, locationData, informationData, rsvpData };
 }

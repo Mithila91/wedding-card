@@ -40,3 +40,11 @@ export type AboutProps = {
     };
     imageUrl: string;
   }
+
+  export type RSVP = {
+    heading: string;
+    paragraph: Paragraph[];
+    closingMessage: string;
+    names: string
+
+  }

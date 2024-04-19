@@ -58,7 +58,7 @@ export default function TheInvite({ data }: LocationProps) {
           {data[0].paragraph[0].children[0].text}
         </p>
         <div className="py-20">
-          <Link className="text-blue-800" href="/">
+          <Link className="text-blue-800" href="#rsvp">
             <motion.button whileHover={{ scale: 1.1 }}>RSVP</motion.button>
           </Link>
         </div>

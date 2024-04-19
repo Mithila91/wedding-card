@@ -5,8 +5,13 @@ import React, { useRef, useState } from "react";
 
 import emailjs from "@emailjs/browser";
 import Modal from "./modal";
+import { RSVP } from "@/types";
 
-const RSVP = () => {
+type RSVPProps = {
+  data: RSVP[];
+};
+
+const RSVP = ({ data }: RSVPProps) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
   });
@@ -60,9 +65,10 @@ const RSVP = () => {
   };
 
   return (
-    <div 
-    id="rsvp"
-    className="bg-blue-800 py-12 flex flex-col md:flex-row justify-center items-center ">
+    <div
+      id="rsvp"
+      className="bg-blue-800 py-12 flex flex-col md:flex-row justify-center items-center "
+    >
       <motion.div
         ref={ref}
         variants={fadeInVariants}
@@ -70,23 +76,39 @@ const RSVP = () => {
         animate={inView ? "show" : "hidden"}
         className="w-full md:w-1/2 md:px-24 px-6 py-10 text-white"
       >
-        <h4 className="font-semibold tracking-wider leading-[48px] text-white text-3xl my-6">
-          Kindly RSVP by completing the form before June 25th, 2024:
-        </h4>
-        <div className="font-thin tracking-wider leading-lose">
-          <p className="pb-4">
-            Your attendance means the world to us, and we want to ensure your
-            comfort and happiness throughout the festivities. Please share any
-            special requests or dietary restrictions so we can make arrangements
-            to accommodate you seamlessly.
-          </p>
-          <p className="pb-4">
-            We are eagerly anticipating your response and eagerly awaiting the
-            moment we can share our love and happiness with you!
-          </p>
-          <p className="pb-4">With love and excitement,</p>
-          <p className="pb-4 font-heading">Mithila & Houssein</p>
-        </div>
+        {data.map((item, index) => (
+          <div key={index}>
+            <h4 className="font-semibold tracking-wider leading-[48px] text-white text-3xl my-6">
+              {item.heading}
+            </h4>
+            {item.paragraph.map((paragraph, index) =>
+              typeof paragraph === "string" ? (
+                <p
+                  key={index}
+                  className="md:w-[500px] text-base font-thin tracking-wider leading-lose pb-4"
+                >
+                  {paragraph}
+                </p>
+              ) : paragraph.children && paragraph.children.length > 0 ? (
+                <ul key={index} className="list-disc p-20 space-y-2">
+                  {paragraph.children[0].text.split("\n").map(
+                    (line, index) =>
+                      line.trim() !== "" && (
+                        <li
+                          key={index}
+                          className="text-base font-thin tracking-wider leading-lose pb-4"
+                        >
+                          {line}
+                        </li>
+                      )
+                  )}
+                </ul>
+              ) : null
+            )}
+            <p className="pb-4">{item.closingMessage}</p>
+            <p className="pb-4 font-heading">{item.names}</p>
+          </div>
+        ))}
       </motion.div>
 
       <motion.div
@@ -101,9 +123,7 @@ const RSVP = () => {
           onSubmit={handleSubmit}
         >
           <div className="mb-5">
-            <label
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue-800"
-            >
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue-800">
               Please enter you name
             </label>
 
@@ -119,9 +139,7 @@ const RSVP = () => {
             />
           </div>
           <div className="mb-5">
-            <label
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue-800"
-            >
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue-800">
               Please enter you email
             </label>
 

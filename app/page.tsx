@@ -6,11 +6,11 @@ import TheInvite from "./components/theInvite";
 import Information from "./components/information";
 import RSVP from "./components/rsvp";
 export default async function Home() {
-  const { aboutData, locationData, informationData } =
+  const { aboutData, locationData, informationData, rsvpData } =
     await getDataFromSanity();
   console.log(
     "sanity data",
-    JSON.stringify({ aboutData, locationData, informationData })
+    JSON.stringify({ aboutData, locationData, informationData, rsvpData })
   );
 
   return (
@@ -25,7 +25,7 @@ export default async function Home() {
       <About data={aboutData} />
       <Gallery data={aboutData} />
       <Information data={informationData} />
-      <RSVP />
+      <RSVP data={rsvpData} />
     </div>
   );
 }
