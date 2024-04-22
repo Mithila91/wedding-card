@@ -6,8 +6,17 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --font-angela-white: 'Angela White', sans-serif;
+
 }
 
+@font-face {
+  font-family: 'Angela White';
+  src: url('/public/fonts/Angela_White.woff') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

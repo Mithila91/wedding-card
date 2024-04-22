@@ -1,9 +1,11 @@
 import "tailwindcss/tailwind.css";
 import '@/styles/index.css'
+import localFont from 'next/font/local'
 
 import {Poppins, Great_Vibes, Playfair_Display } from "next/font/google";
 import Navbar from "./components/Navbar";
 import { Suspense } from "react";
+
 
 const sans = Poppins({
   variable: "--font-sans",
@@ -11,11 +13,12 @@ const sans = Poppins({
   weight: ["400"],
 });
 
-const heading = Playfair_Display({
-  variable: "--playfair-display",
-  subsets: ["latin"],
-  weight: ["400"],
-});
+const heading = localFont({
+  src: '/fonts/ballroom.regular.ttf',
+  display: 'swap',
+  variable: "--ballroom",
+
+})
 
 export default async function RootLayout({
   children,

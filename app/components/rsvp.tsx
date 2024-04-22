@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -106,9 +107,9 @@ const RSVP = ({ data }: RSVPProps) => {
               ) : null
             )}
             <p className="pb-4">{item.closingMessage}</p>
-            <p className="pb-4 font-heading">{item.names}</p>
           </div>
         ))}
+        <p className="font-heading">// Mithila & Houssein</p>
       </motion.div>
 
       <motion.div

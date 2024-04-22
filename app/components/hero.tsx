@@ -43,6 +43,9 @@ export const Hero: React.FC<HeroProps> = ({
       className="relative h-[90vh] mb-40 flex flex-col items-center justify-center overflow-hidden"
       ref={ref}
     >
+      {/* <div className="absolute inset-0 z-0">
+        <Image src="/images/heroBg.png" layout="fill" objectFit="cover" alt="" />
+      </div> */}
       <motion.div
         className="z-10"
         variants={containerVariants}
@@ -50,7 +53,7 @@ export const Hero: React.FC<HeroProps> = ({
         animate={inView ? "show" : "hidden"}
       >
         <motion.h1
-          className="font-heading md:text-[84px] text-5xl py-20 md:px-0 px-6 leading-12 tracking-wide text-center"
+          className="font-heading md:text-[84px] text-5xl py-20 md:px-0 px-6 leading-[4.5rem] tracking-wide text-center"
           variants={childVariants}
         >
           {mainHeading}

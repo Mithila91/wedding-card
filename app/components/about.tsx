@@ -64,8 +64,8 @@ export default function About({ data }: AboutProps) {
                   {isExpanded ? desc : truncate(desc, 200)}
                 </p>
               ))}
-              <button onClick={toggleExpand} className="text-white pb-10">
-                {isExpanded ? "Read Less" : "Read More.."}
+              <button onClick={toggleExpand} className="text-white py-10 font-heading">
+                {isExpanded ? "Read Less ..." : "Read More ..."}
               </button>
             </div>
           </motion.div>

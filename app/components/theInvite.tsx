@@ -43,7 +43,7 @@ export default function TheInvite({ data }: LocationProps) {
             {data[0].subheading}
           </span>
         </h4>
-        <h3 className="md:text-[64px] text-5xl font-bolder md:my-4 my-10 md:w-[554px] ">
+        <h3 className="md:text-[64px] text-5xl tracking-wide leading-[4.5rem] font-bolder md:my-4 my-10 md:w-[554px] ">
           {data[0].heading}
         </h3>
       </motion.div>
@@ -53,7 +53,7 @@ export default function TheInvite({ data }: LocationProps) {
         initial="hidden"
         animate={inView ? "show" : "hidden"}
       >
-        <h4 className="text-lg font-bold mb-2">{data[0].title}</h4>
+        <h4 className="text-lg font-bolder mb-2 pb-8 text-blue-800">{data[0].title}</h4>
         <p className="text-base font-thin tracking-wider leading-lose">
           {data[0].paragraph[0].children[0].text}
         </p>
