@@ -48,9 +48,9 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="absolute top-0 left-0 ">
+      <div className="absolute top-[-4rem] left-[-4rem] ">
         <Image
-          src="/images/leftflowers.png"
+          src="/images/warmFlowerLeft.png"
           alt="Flowers image"
           width={350}
           height={350}
@@ -77,7 +77,7 @@ const Navbar = () => {
         <motion.div
           className={`flex ${
             isOpen ? "block" : "hidden"
-          } w-full h-screen pt-32 md:h-auto md:w-auto flex-col md:justify-end`}
+          } w-full h-screen pt-48 md:h-auto md:w-auto flex-col items-center md:justify-end`}
           variants={mobileParentVariants}
           initial="initial"
           animate={isOpen ? "animate" : "initial"}
@@ -86,12 +86,12 @@ const Navbar = () => {
             <motion.div
               key={index}
               variants={childVariants}
-              className="pb-6 font-bold"
+              className="pb-8 font-bold"
             >
               <Link
                 key={item.href}
                 href={item.href}
-                className="py-4 text-blue-800 text-4xl"
+                className="py-4 text-forest-800 text-4xl"
               >
                 {item.label}
               </Link>

@@ -70,12 +70,12 @@ export const Hero: React.FC<HeroProps> = ({
               y1="50%"
               x2="100%"
               y2="50%"
-              stroke="#214E6F"
+              stroke="#444A3B"
               strokeWidth="2"
             />
           </motion.svg>
           <motion.h2
-            className="md:text-2xl md:w-auto w-1/2 text-xl font-thin text-blue-800 text-center"
+            className="md:text-2xl md:w-auto w-1/2 text-xl font-thin text-forest-800 text-center"
             variants={childVariants}
           >
             {subheading}
@@ -91,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({
               y1="50%"
               x2="100%"
               y2="50%"
-              stroke="#214E6F"
+              stroke="#444A3B"
               strokeWidth="2"
             />
           </motion.svg>
@@ -100,9 +100,9 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="absolute bottom-0 left-0 md:left-40 md:w-1/2 w-1/3 object-cover">
         <Image src={heroImage} alt="hero image" width={300} height={300} />
       </div>
-      <div className="absolute bottom-[-30px] right-[-40px] object-cover">
+      <div className="absolute bottom-[-4rem] right-[-4rem] object-cover">
         <Image
-          src="/images/rightflowers.png"
+          src="/images/warmFlowerRight.png"
           alt="Flowers image"
           width={350}
           height={350}

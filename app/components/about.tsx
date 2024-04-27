@@ -42,7 +42,7 @@ export default function About({ data }: AboutProps) {
       {data.map((about) => (
         <div
           key={about._id}
-          className="bg-blue-800 py-8 flex flex-col md:flex-row items-center justify-center gap-4 w-full"
+          className="bg-burnt-800 py-8 flex flex-col md:flex-row items-center justify-center gap-4 w-full"
         >
           <motion.div
             className="text-center md:w-1/2"

@@ -29,8 +29,11 @@ const config: Config = {
         100: "#F1E6DC",
    
       },
-      blue: {
-        800: "#214E6F",
+      burnt: {
+        800: "#96532B",
+      },
+      forest: {
+        800: "#444A3B",
       },
     },
     extend: {

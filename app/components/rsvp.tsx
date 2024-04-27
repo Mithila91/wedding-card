@@ -68,7 +68,7 @@ const RSVP = ({ data }: RSVPProps) => {
   return (
     <div
       id="rsvp"
-      className="bg-blue-800 py-12 flex flex-col md:flex-row justify-center items-center "
+      className="bg-burnt-800 py-12 flex flex-col md:flex-row justify-center items-center "
     >
       <motion.div
         ref={ref}
@@ -124,7 +124,7 @@ const RSVP = ({ data }: RSVPProps) => {
           onSubmit={handleSubmit}
         >
           <div className="mb-5">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue-800">
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-forest-800">
               Please enter you name
             </label>
 
@@ -140,7 +140,7 @@ const RSVP = ({ data }: RSVPProps) => {
             />
           </div>
           <div className="mb-5">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue-800">
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-forest-800">
               Please enter you email
             </label>
 
@@ -156,7 +156,7 @@ const RSVP = ({ data }: RSVPProps) => {
             />
           </div>
           <div className="mb-5">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue-800">
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-forest-800">
               Please let us know if you have any Requests/allergies/other
             </label>
 
@@ -172,11 +172,11 @@ const RSVP = ({ data }: RSVPProps) => {
           </div>
           <div className="mb-5">
             <motion.button
-              whileHover={{ scale: 1.1, borderColor: "#9f7aea" }}
+              whileHover={{ scale: 1.1, borderColor: "#96532B" }}
               type="submit"
               className="w-full flex justify-center hover:bg-purple-700 
-              text-blue-800 p-3 rounded-lg tracking-wide font-semibold 
-              cursor-pointer transition ease-in duration-500 border-blue-800 border-2"
+              text-forest-800 p-3 rounded-lg tracking-wide font-semibold 
+              cursor-pointer transition ease-in duration-500 border-forest-800 border-2"
             >
               Submit
             </motion.button>

@@ -65,7 +65,7 @@ export default function Information({ data }: InformationProps) {
         >
           <motion.button whileHover={{ scale: 1.1 }}>Map</motion.button>
         </Link>
-        <p className="text-base text-blue-800 font-bold mt-4">
+        <p className="text-base text-forest-800 font-bold mt-4">
           <span className="pb-1 border-b-2 font-bold border-current">
             Ceremony starts at:
           </span>
@@ -77,7 +77,7 @@ export default function Information({ data }: InformationProps) {
         initial="hidden"
         animate={inView ? "show" : "hidden"}
       >
-        <h4 className="text-base py-6 text-blue-800 font-bold mb-2">
+        <h4 className="text-base py-6 text-forest-800 font-bold mb-2">
           {data[0].subheading}
         </h4>
         {data[0].paragraph.map((paragraph, index) =>
