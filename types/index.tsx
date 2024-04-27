@@ -41,7 +41,7 @@ export type AboutProps = {
     imageUrl: string;
   }
 
-  export type RSVP = {
+  export type RSVPType = {
     heading: string;
     paragraph: Paragraph[];
     closingMessage: string;

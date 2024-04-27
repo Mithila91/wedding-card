@@ -43,9 +43,7 @@ export const Hero: React.FC<HeroProps> = ({
       className="relative h-[90vh] mb-40 flex flex-col items-center justify-center overflow-hidden"
       ref={ref}
     >
-      {/* <div className="absolute inset-0 z-0">
-        <Image src="/images/heroBg.png" layout="fill" objectFit="cover" alt="" />
-      </div> */}
+    
       <motion.div
         className="z-10"
         variants={containerVariants}
@@ -98,7 +96,7 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
       </motion.div>
       <div className="absolute bottom-0 left-0 md:left-40 md:w-1/2 w-1/3 object-cover">
-        <Image src={heroImage} alt="hero image" width={300} height={300} />
+        <Image src={heroImage} alt="hero image" width={350} height={350} />
       </div>
       <div className="absolute bottom-[-4rem] right-[-4rem] object-cover">
         <Image

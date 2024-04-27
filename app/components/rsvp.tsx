@@ -6,10 +6,10 @@ import React, { useRef, useState } from "react";
 
 import emailjs from "@emailjs/browser";
 import Modal from "./modal";
-import { RSVP } from "@/types";
+import { RSVPType } from "@/types";
 
 type RSVPProps = {
-  data: RSVP[];
+  data: RSVPType[];
 };
 
 const RSVP = ({ data }: RSVPProps) => {
