@@ -1,14 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { useInView } from "react-intersection-observer";
 
-type TimelineBlockProps = {
-  title: string;
-  time: string | number;
-  icon: ReactNode;
-  delay: number;
-  position?: "left" | "right";
-};
 
 const draw = {
   hidden: { pathLength: 0, opacity: 0 },
@@ -22,66 +15,64 @@ const draw = {
   },
 };
 
-const TimelineBlock = ({ title, time, icon, delay, position }: TimelineBlockProps) => {
-  return (
-    <motion.div
-      className="flex items-center justify-between mb-8 w-full"
-      initial={{ opacity: 0, x: -100 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: delay }}
-    >
-      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center">
-        {icon}
-      </div>
-      <div className="flex-1 ml-4 bg-gray-100 p-4 rounded-lg">
-        <h3 className="text-lg font-semibold mb-2">{title}</h3>
-        <p className="text-gray-700">{time}</p>
-      </div>
-    </motion.div>
-  );
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
 };
 
 const Timeline = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+  });
   const timelineData = [
     {
-      title: "Event 1",
-      time: "January 2022",
-      icon: <i className="fas fa-clock"></i>,
-      delay: 0.2,
+      time: "14.00",
+      description: "wedding ceremony.",
     },
     {
-      title: "Event 2",
-      time: "March 2022",
-      icon: <i className="fas fa-briefcase"></i>,
-      delay: 0.4,
+      time: "15.00-16.00",
+      description: "Photo shoot for the newlyweds.",
     },
     {
-      title: "Event 3",
-      time: "June 2022",
-      icon: <i className="fas fa-chart-line"></i>,
-      delay: 0.6,
+      time: "15.00-16.00",
+      description: "Cocktails & Mingle for the guests",
     },
     {
-      title: "Event 4",
-      time: "September 2022",
-      icon: <i className="fas fa-user-friends"></i>,
-      delay: 0.8,
+      time: "17.00-18.00",
+      description: "Dinner is served.",
+    },
+    {
+      time: "19.00-20.00",
+      description: "First dance & cake cutting.",
+    },
+    {
+      time: "21.00-00.45",
+      description:"Party time!",
+    },
+    {
+      time: "1.00",
+      description:"Shuttles back to town",
     },
   ];
 
   return (
     <>
-      <h2 className="font-heading text-5xl text-forest-800 font-semibold text-center md:mb-20 md:mt-0 mt-60">
+      <h2 className="font-heading text-5xl text-forest-800 font-semibold text-center md:mb-20 mb-40 md:mt-0 mt-60">
         Schedule
       </h2>
-      <div className="container w-full h-1/2 flex justify-center  md:my-8 mt-20">
-        <div className="relative">
+      <div className="container bg-gray-200 mx-auto w-full h-full">
+        <div className="relative wrap overflow-hidden p-10 h-full">
           <svg
-            className="absolute top-0 left-6 h-[480px] w-1 mb-20"
+            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-full w-1 mb-20"
             viewBox="0 0 1 1"
             preserveAspectRatio="none"
           >
             <motion.path
+              id="linePath"
               d="M 0 0 V 1"
               stroke="#444A3B"
               variants={draw}
@@ -89,32 +80,46 @@ const Timeline = () => {
               animate="visible"
             />
           </svg>
-          <motion.div
-            className="flex flex-col"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ staggerChildren: 0.2, delayChildren: 0.2 }}
-          >
-            {timelineData.map((event, index) => (
-              <div
-                key={index}
-                className={`flex ${
-                  index % 2 === 0 ? "flex-row-reverse" : "flex-row"
-                } justify-center`}
+          <div className="container mx-auto w-full h-full">
+            <div className="relative wrap overflow-hidden p-10 h-full">
+              <motion.div
+                ref={ref}
+                variants={stagger}
+                initial="initial"
+                animate={inView ? "animate" : "initial"}
               >
-                <TimelineBlock
-                  title={event.title}
-                  time={event.time}
-                  icon={event.icon}
-                  delay={index * 0.2}
-                  position={index % 2 === 0 ? "right" : "left"}
-                />
-              </div>
-            ))}
-          </motion.div>
+                {timelineData.map((data, index) => (
+                  <motion.div
+                    key={index}
+                    className={`flex ${
+                      index % 2 === 0 ? "flex-row-reverse" : ""
+                    } mb-8`}
+                    variants={{
+                      initial: { opacity: 0, y: 0 },
+                      animate: { opacity: 1, y: 20, transition: { duration: 0.5 } },
+                    }}
+                  >
+                    <div className="w-1/2 mx-8"></div>
+                    <div className=" px-6 py-4">
+                      <h3 className="mb-3 font-bold text-forest-800 text-xl">
+                        {data.time}
+                      </h3>
+                      <p className="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
+                        {data.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </div>
       </div>
+      <div className="md:w-1/2 w-[350px] flex justify-center mx-auto">
+      <p className="tracking-wider leading-loose text-2xl my-8 mb-20 font-heading">Ps.. Since you know us you know that 
+      nothing will be according to the schedule....</p>
+      </div>
+
     </>
   );
 };
