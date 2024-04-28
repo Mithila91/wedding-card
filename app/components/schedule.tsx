@@ -110,8 +110,8 @@ const Timeline = () => {
                       },
                     }}
                   >
-                    <div className="w-1/2 mx-8"></div>
-                    <div className="flex flex-col md:flex-row items-start md:items-center md:space-x-4 px-8 py-4">
+                    <div className="w-1/2 mx-12"></div>
+                    <div className="flex flex-col md:flex-row items-start md:items-center md:space-x-4 px-4 py-4">
                       <Image
                         src={data.image}
                         alt={data.description}
