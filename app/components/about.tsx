@@ -57,14 +57,16 @@ export default function About({ data }: AboutProps) {
             </h2>
             <div className="md:px-40 p-6 md:pb-0 mb-10 h-[448px] overflow-auto scrollbar-hide">
               {about.description.map((desc, index) => (
-                <p
-                  key={index}
-                  className="text-base text-white font-thin mb-4 tracking-wider"
-                >
-                  {isExpanded ? desc : truncate(desc, 200)}
-                </p>
+               <p
+               key={index}
+               className="text-base text-white font-thin mb-4 tracking-wider"
+               dangerouslySetInnerHTML={{ __html: isExpanded ? desc.replace(/\n/g, '<br />') : truncate(desc, 800).replace(/\n/g, '<br />') }}
+            />
               ))}
-              <button onClick={toggleExpand} className="text-white py-10 font-heading">
+              <button
+                onClick={toggleExpand}
+                className="text-white py-10 font-heading"
+              >
                 {isExpanded ? "Read Less ..." : "Read More ..."}
               </button>
             </div>

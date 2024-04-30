@@ -9,10 +9,6 @@ import Timeline from "./components/schedule";
 export default async function Home() {
   const { aboutData, locationData, informationData, rsvpData } =
     await getDataFromSanity();
-  console.log(
-    "sanity data",
-    JSON.stringify({ aboutData, locationData, informationData, rsvpData })
-  );
 
   return (
     <div className="overflow-x-hidden">
