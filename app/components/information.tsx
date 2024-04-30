@@ -63,13 +63,9 @@ export default function Information({ data }: InformationProps) {
           className="text-base pb-1 border-b-2 border-current"
           href="https://maps.app.goo.gl/YUF2ebk8SFCrVZQ5A"
         >
-          <motion.button whileHover={{ scale: 1.1 }}>Map</motion.button>
+          <motion.button whileHover={{ scale: 1.1 }}>How to ge here</motion.button>
         </Link>
-        <p className="text-base text-forest-800 font-bold mt-4">
-          <span className="pb-1 border-b-2 font-bold border-current">
-            Ceremony starts at:
-          </span>
-        </p>
+
       </motion.div>
       <motion.div
         className="md:w-1/2 p-4"
@@ -77,18 +73,26 @@ export default function Information({ data }: InformationProps) {
         initial="hidden"
         animate={inView ? "show" : "hidden"}
       >
-        <h4 className="text-base py-6 text-forest-800 font-bold mb-2">
+        {/* <h3 className="mb-3 font-bold text-forest-800 text-xl">
           {data[0].subheading}
-        </h4>
-        {data[0].paragraph.map((paragraph, index) =>
-          typeof paragraph === "string" ? (
-            <motion.p
-              key={index}
-              className="md:w-[500px] text-base font-thin tracking-wider leading-lose pb-4"
+        </h3> */}
+        {data[0].paragraph.map((paragraph, index) => {
+          const headings = ["VENUE PARKING", "KIDDOS", "SHUTTLES", "REGISTRY"];
+          return typeof paragraph === "string" ? (
+            <>
+              <motion.h4 
               variants={item}
-            >
-              {paragraph}
-            </motion.p>
+              className="text-md pt-4 text-forest-800 font-extrabold">
+                {headings[index % headings.length]}
+              </motion.h4>
+              <motion.p
+                key={index}
+                className="md:w-[500px] text-base font-thin tracking-wider leading-lose py-2"
+                variants={item}
+              >
+                {paragraph}
+              </motion.p>
+            </>
           ) : paragraph.children && paragraph.children.length > 0 ? (
             <ul key={index} className="list-disc p-20 space-y-2">
               {paragraph.children[0].text.split("\n").map(
@@ -103,8 +107,8 @@ export default function Information({ data }: InformationProps) {
                   )
               )}
             </ul>
-          ) : null
-        )}
+          ) : null;
+        })}
       </motion.div>
     </motion.div>
   );

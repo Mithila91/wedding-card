@@ -68,7 +68,7 @@ const Timeline = () => {
 
   return (
     <>
-      <h2 className="font-heading text-5xl text-forest-800 font-semibold text-center md:mb-20 mb-40 md:mt-0 mt-60">
+      <h2 className="font-heading text-5xl text-forest-800 font-semibold text-center md:mb-20 mb-40 md:mt-0 mt-80">
         Schedule
       </h2>
       <div className="container bg-gray-200 mx-auto w-full h-full">
@@ -87,6 +87,7 @@ const Timeline = () => {
               animate="visible"
             />
           </svg>
+
           <div className="container mx-auto md:w-1/2 h-full">
             <div className="relative wrap overflow-hidden h-full">
               <motion.div
@@ -100,7 +101,7 @@ const Timeline = () => {
                     key={index}
                     className={`flex ${
                       index % 2 === 0 ? "flex-row-reverse" : ""
-                    } mb-4`}
+                    } `}
                     variants={{
                       initial: { opacity: 0, y: 0 },
                       animate: {
@@ -110,8 +111,7 @@ const Timeline = () => {
                       },
                     }}
                   >
-                    <div className="w-1/2 mx-12"></div>
-                    <div className="flex flex-col md:flex-row items-start md:items-center md:space-x-4 px-4 py-4">
+                    <div className="w-1/2 flex flex-col md:flex-row items-start md:items-center md:space-x-4 px-4 py-4">
                       <Image
                         src={data.image}
                         alt={data.description}
