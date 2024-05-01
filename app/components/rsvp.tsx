@@ -7,6 +7,10 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Modal from "./modal";
 import { RSVPType } from "@/types";
+const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID;
+const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
+const publicKey = process.env.NEXT_PUBLIC_KEY;
+emailjs.init(publicKey!);
 
 type RSVPProps = {
   data: RSVPType[];
@@ -31,15 +35,11 @@ const RSVP = ({ data }: RSVPProps) => {
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (!name || !email) {
-      // Display modal with error message
       setModalOpen(true);
-      setIsSuccess(false); // Set isSuccess to false for error message
+      setIsSuccess(false); 
       return;
     }
 
-    const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_KEY;
 
     const templateParams = {
       from_name: name,
@@ -55,17 +55,17 @@ const RSVP = ({ data }: RSVPProps) => {
         setName("");
         setEmail("");
         setMessage("");
-        setModalOpen(true); // Display modal with success message
-        setIsSuccess(true); // Set isSuccess to true for success message
+        setModalOpen(true);
+        setIsSuccess(true); 
       })
       .catch((error) => {
         console.error("Error sending email:", error);
-        setModalOpen(true); // Display modal with error message
-        setIsSuccess(false); // Set isSuccess to false for error message
+        setModalOpen(true); 
+        setIsSuccess(false);
       });
   };
-
   return (
+    
     <div
       id="rsvp"
       className="bg-burnt-800 py-12 flex flex-col md:flex-row justify-center items-center "
