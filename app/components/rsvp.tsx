@@ -157,7 +157,7 @@ const RSVP = ({ data }: RSVPProps) => {
           </div>
           <div className="mb-5">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-forest-800">
-              Please let us know if you have any Requests/allergies/other
+              Please let us know if you have a plus one, allergies or any other message
             </label>
 
             <textarea

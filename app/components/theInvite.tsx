@@ -53,13 +53,13 @@ export default function TheInvite({ data }: LocationProps) {
         initial="hidden"
         animate={inView ? "show" : "hidden"}
       >
-        <h4 className="text-lg font-bolder mb-2 pb-8 text-forest-800">{data[0].title}</h4>
+        <h4 className="text-lg font-heading tracking-wider font-bolder mb-2 pb-8 text-forest-800">{data[0].title}</h4>
         <p className="text-base font-thin tracking-wider leading-lose">
           {data[0].paragraph[0].children[0].text}
         </p>
         <div className="py-20">
-          <Link className="text-forest-800" href="#rsvp">
-            <motion.button whileHover={{ scale: 1.1 }}>RSVP</motion.button>
+          <Link className="text-forest-800 font-bold" href="#rsvp">
+            <motion.button whileHover={{ scale: 1.1 }}>RSVP HERE</motion.button>
           </Link>
         </div>
       </motion.div>

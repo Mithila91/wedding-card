@@ -4,6 +4,7 @@ import { AboutData } from "@/types";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { ArrowDown } from "lucide-react";
 
 export type AboutProps = {
   data: AboutData[];
@@ -56,12 +57,30 @@ export default function About({ data }: AboutProps) {
               {about.heading}
             </h2>
             <div className="md:px-40 p-6 md:pb-0 mb-10 h-[448px] overflow-auto scrollbar-hide">
+              <motion.div
+                animate={{
+                  y: [-20, 0, -20],
+                  transition: {
+                    duration: 1,
+                    repeat: Infinity,
+                    type: "bounce",
+                    repeatDelay: 0.5,
+                  },
+                }}
+                className="text-white justify-center flex mx-auto mb-12"
+              >
+                <ArrowDown className="h-8 w-8" />
+              </motion.div>
               {about.description.map((desc, index) => (
-               <p
-               key={index}
-               className="text-base text-white font-thin mb-4 tracking-wider"
-               dangerouslySetInnerHTML={{ __html: isExpanded ? desc.replace(/\n/g, '<br />') : truncate(desc, 800).replace(/\n/g, '<br />') }}
-            />
+                <p
+                  key={index}
+                  className="text-base text-white font-thin mb-4 tracking-wider"
+                  dangerouslySetInnerHTML={{
+                    __html: isExpanded
+                      ? desc.replace(/\n/g, "<br />")
+                      : truncate(desc, 800).replace(/\n/g, "<br />"),
+                  }}
+                />
               ))}
               <button
                 onClick={toggleExpand}
