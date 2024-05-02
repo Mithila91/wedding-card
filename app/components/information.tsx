@@ -63,7 +63,7 @@ export default function Information({ data }: InformationProps) {
           className="text-base pb-1 border-b-2 border-current"
           href="https://maps.app.goo.gl/YUF2ebk8SFCrVZQ5A"
         >
-          <motion.button whileHover={{ scale: 1.1 }}>How to ge here</motion.button>
+          <motion.button whileHover={{ scale: 1.1 }}>How to get here</motion.button>
         </Link>
 
       </motion.div>

@@ -61,7 +61,7 @@ const Timeline = () => {
     },
     {
       time: "1.00",
-      description: "Shuttles back to town",
+      description: "Shuttles back to town.",
       image: "/images/shuttle.png",
     },
   ];
