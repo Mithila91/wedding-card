@@ -4,7 +4,6 @@ import Link from "next/link";
 import { InformationData } from "@/types";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { ArrowRight } from "lucide-react";
 
 type InformationProps = {
   data: InformationData[];

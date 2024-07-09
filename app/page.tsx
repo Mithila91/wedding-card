@@ -10,6 +10,7 @@ export default async function Home() {
   const { aboutData, locationData, informationData, rsvpData } =
     await getDataFromSanity();
 
+    console.log(informationData);
   return (
     <div className="overflow-x-hidden">
       <Hero
