@@ -76,7 +76,7 @@ export default function Information({ data }: InformationProps) {
           {data[0].subheading}
         </h3> */}
         {data[0].paragraph.map((paragraph, index) => {
-          const headings = ["VENUE PARKING", "KIDDOS", "SHUTTLES", "REGISTRY"];
+          const headings = ["VENUE PARKING / SHUTTLES TO THE VENUE","SHUTTLES BACK TO CITY", "KIDDOS", "REGISTRY"];
           return typeof paragraph === "string" ? (
             <>
               <motion.h4 
